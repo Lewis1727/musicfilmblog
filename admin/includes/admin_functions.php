@@ -65,7 +65,6 @@ function makeSlug(String $string){
 	$slug = preg_replace('/[^A-Za-z0-9-]+/', '-', $string);
 	return $slug;
 }
-
 /* - - - - - - - - - - 
 -  Topic actions
 - - - - - - - - - - -*/
@@ -138,7 +137,6 @@ function createAdmin($request_values){
 		exit(0);
 	}
 }
-
 /* * * * * * * * * * * * * * * * * * * * *
 * - Takes admin id as parameter
 * - Fetches the admin from database
@@ -174,7 +172,7 @@ function updateAdmin($request_values){
 	$passwordConfirmation = esc($request_values['passwordConfirmation']);
 	if(isset($request_values['role'])){
 		$role = $request_values['role'];
-	}
+}
 	// register user if there are no errors in the form
 	if (count($errors) == 0) {
 		//encrypt the password (security purposes)
@@ -199,7 +197,6 @@ function deleteAdmin($admin_id) {
 	}
 }
 
-
 /* - - - - - - - - - - 
 -  Topics functions
 - - - - - - - - - - -*/
@@ -212,7 +209,7 @@ function getAllTopics() {
 	return $topics;
 }
 function createTopic($request_values){
-	global $conn, $errors, $topic_name;
+	global $conn, $errors, $topic_name, $topic_id;
 	$topic_name = esc($request_values['topic_name']);
 	// create slug: if topic is "Life Advice", return "life-advice" as slug
 	$topic_slug = makeSlug($topic_name);
@@ -229,7 +226,7 @@ function createTopic($request_values){
 	// register topic if there are no errors in the form
 	if (count($errors) == 0) {
 		$query = "INSERT INTO topics (name, slug) 
-				  VALUES('$topic_name', '$topic_slug')";
+				  VALUES( '$topic_name', '$topic_slug')";
 		mysqli_query($conn, $query);
 
 		$_SESSION['message'] = "Topic created successfully";
@@ -280,8 +277,5 @@ function deleteTopic($topic_id) {
 		exit(0);
 	}
 }
-
-
-
 
 ?>

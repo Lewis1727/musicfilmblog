@@ -93,4 +93,6 @@ function getAllTopics()
 	return $topics;
 }
 
+
+
 ?>

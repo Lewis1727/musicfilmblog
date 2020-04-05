@@ -6,6 +6,7 @@
 	<title>Admin | Manage Topics</title>
 </head>
 <body>
+	<div class="container">
 	<!-- admin navbar -->
 	<?php include(ROOT_PATH . '/admin/includes/navbar.php') ?>
 	<div class="container content">
@@ -23,6 +24,7 @@
 					<input type="hidden" name="topic_id" value="<?php echo $topic_id; ?>">
 				<?php endif ?>
 				<input type="text" name="topic_name" value="<?php echo $topic_name; ?>" placeholder="Topic">
+				<!-- <input type="text" name="topic_id" value="<?php echo $topic_id; ?>" placeholder="Topic ID"> -->
 				<!-- if editing topic, display the update button instead of create button -->
 				<?php if ($isEditingTopic === true): ?> 
 					<button type="submit" class="btn" name="update_topic">UPDATE</button>
@@ -36,13 +38,13 @@
 		<!-- Display records from DB-->
 		<div class="table-div">
 			<!-- Display notification message -->
-			<?php include(ROOT_PATH . '/admin/includes/messages.php') ?>
+			<?php include(ROOT_PATH . '/includes/messages.php') ?>
 			<?php if (empty($topics)): ?>
 				<h1>No topics in the database.</h1>
 			<?php else: ?>
 				<table class="table">
 					<thead>
-						<th>N</th>
+						<th></th>
 						<th>Topic Name</th>
 						<th colspan="2">Action</th>
 					</thead>
@@ -68,6 +70,7 @@
 			<?php endif ?>
 		</div>
 		<!-- // Display records from DB -->
+	</div>
 	</div>
 </body>
 </html>

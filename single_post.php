@@ -27,16 +27,14 @@
 				<img src="<?php echo BASE_URL . 'static/images/' . $post['image']; ?>" class="post_image" alt="">
 				<div class="post-body-div">
 					<?php echo file_get_contents (BASE_URL . 'includes/topics/' . $post['body']); ?>
+					<!-- <?php echo html_entity_decode($post['body']); ?> -->
 				</div>
 			<?php endif ?>
 			</div>
 			<!-- // full post div -->
 			
-			<!-- comments section -->
-			<!--  coming soon ...  -->
 		</div>
-		<!-- // Page wrapper -->
-
+		
 		<!-- post sidebar -->
 		<div class="post-sidebar">
 			<div class="card">
@@ -57,5 +55,12 @@
 	</div>
 </div>
 <!-- // content -->
+<!-- Javascripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap Javascript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="static/js/script.js"></script>
+
 
 <?php include( ROOT_PATH . '/includes/footer.php'); ?>

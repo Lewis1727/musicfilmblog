@@ -29,15 +29,23 @@ th { text-align: center;}
 /* buttons */
 .btn {
 	color: white;
-	background: #4E6166;
+	background: rgb(0, 0, 0);
 	text-align: center;
 	border: none;
 	border-radius: 5px;
 	display: block;
-	letter-spacing: .1em;
+	letter-spacing: 1px;
 	padding: 13px 20px;
 	text-decoration: none;
+	font-family: monospace;
 }
+
+.container {
+	width: 80%;
+	margin: 0px auto;
+	margin-bottom: 70px;	
+}
+
 /* * * * * * * * * *
 * HEADER
 * * * * * * * * * */
@@ -46,20 +54,49 @@ th { text-align: center;}
 	font-family: 'Noto Serif', serif;
 	color: white;
 	background: black;
+	border-radius: 0px 0px 6px 6px;
 }
 .header .logo { width: 50%; float: left; }
-.header .logo h1 { color: white; }
-.header .user-info { width: 10%; margin-top: 10px; float: right;}
-.header .logout-btn { color: red; text-decoration: none; }
+.header .logo h1 { color: white;font-family: monospace; font-size: 3em; letter-spacing: 5px; font-weight: 100; }
+.header .user-info { width: 15%; margin: auto; float: right; font-size: 2em; font-family: 'Futura',sans-serif; padding-top: initial ;}
+.header .logout-btn { 
+	font-size: 0.7em;
+	font-family: 'Futura',sans-serif;
+	background: red;
+	color: white;
+	text-decoration: none; 
+	text-align: center;
+	border-radius: 5px;
+	border: none;
+	letter-spacing: .1em;
+	padding: 5px 10px;
+	font-weight: 700;
+	text-align: center;
+}
+.header .login-btn { 
+	font-size: 1em;
+	font-family: 'Futura',sans-serif;
+	background: green;
+	color: white;
+	text-decoration: none; 
+	text-align: center;
+	border-radius: 5px;
+	border: none;
+	letter-spacing: .1em;
+	padding: 5px 10px;
+	font-weight: 700;
+	text-align: center;
+}
 .header:after{ content: ""; display: block; clear: both; }
 /* * * * * * * * * *
 * DASHBOARD
 * * * * * * * * * */
-.container {
-	width: 95%;
+.container.dashboard{
+	width: 100%;
 	margin: 5px auto 50px;
 	border: 1px solid #BFBCB3;
 	padding: 10px 0px 50px;
+	border-radius: 5px;
 }
 .container:after { content: ""; display: block; clear: both; }
 .container.dashboard h1 { text-align: center; margin: 25px; }
@@ -71,8 +108,11 @@ th { text-align: center;}
 	text-align: center;
 	border-radius: 3px;
 	border: 1px solid #BFBCB3;
+	border-radius: 5px;
+	text-decoration: none;
+	color: black;
 }
-.container.dashboard .stats a.first { margin-left: 25px; }
+.container.dashboard .stats a.first { margin-left: 80px; }
 .container.dashboard .stats a:hover { cursor: pointer; background-color: #E1E1E1; }
 .container.dashboard .buttons { margin-left: 15px; }
 .container.dashboard .buttons a {
@@ -82,27 +122,38 @@ th { text-align: center;}
 	color: #444;
 	padding: 10px 25px;
 	border: none;
-	background-color: #0E7D92;
+	background-color: gray;
 	color: white;
+	border-radius: 5px;
+	font-size: 1em;
+	font-family: 'Futura',sans-serif;
+	font-weight: 700;
 }
 /* * * * * * * * * *
 * PAGE CONTENT
 * * * * * * * * * */
+.container.content {
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid #BFBCB3;
+	margin-top: 10px;
+}
 .container.content .menu { width: 16%; float: left; padding: 40px 10px; }
 /* Menu card */
 .container.content .menu .card .card-header {
 	padding: 10px;
 	text-align: center;
 	border-radius: 3px 3px 0px 0px;
-	background: #3E606F;
+	background: black;
 }
-.container.content .menu .card .card-header h2 { color: white; }
+.container.content .menu .card .card-header h2 { color: white; font-family: monospace;}
 .container.content .menu .card .card-content a {
 	display: block;
 	box-sizing: border-box;
 	padding: 8px 10px;
 	border-bottom: 1px solid #e4e1e1;
 	color: #444;
+	font-family: monospace;
 }
 .container.content .menu .card .card-content a:hover {
 	padding-left: 20px; background: #F9F9F9; transition: 0.1s;
@@ -110,12 +161,12 @@ th { text-align: center;}
 /* Actions div (at the middle) */
 .container.content .action { width: 35%; float: left; text-align: center; }
 .container.content .action form { width: 90%; }
-.container.content .action .page-title { margin: 25px; }
+.container.content .action .page-title { margin: 25px; font-family: monospace; font-size: 2em;}
 .container.content .action.create-post-div { width: 80%; }
 /* Table div (Displaying records from DB) */
 .table-div { float: left; width: 47%; }
 .table-div .message { width: 90%; margin-top: 20px; }
-.table-div table { width: 90%; }
+.table-div table { width: 90%; font-family: monospace; }
 .table-div a.fa { color: white; padding: 3px; }
 .table-div .edit { background: #004220; }
 .table-div .delete { background: #F70E1A; }

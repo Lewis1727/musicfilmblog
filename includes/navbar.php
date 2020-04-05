@@ -4,8 +4,8 @@
 	</div>
 	<ul>
 	  <li><a class="active" href="index.php">Home</a></li>
-	  <li><a href="#news">News</a></li>
-	  <li><a href="#contact">Contact</a></li>
-	  <li><a href="#about">My Profile</a></li>
+	  <li><a href="#music">Music</a></li>
+	  <li><a href="#films">Films</a></li>
+	  <li><a href="#myprofiles">My Profile</a></li>
 	</ul>
 </div>

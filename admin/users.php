@@ -9,6 +9,7 @@
 	<title>Admin | Manage users</title>
 </head>
 <body>
+	<div class="container">
 	<!-- admin navbar -->
 	<?php include(ROOT_PATH . '/admin/includes/navbar.php') ?>
 	<div class="container content">
@@ -17,7 +18,6 @@
 		<!-- Middle form - to create and edit  -->
 		<div class="action">
 			<h1 class="page-title">Create/Edit Admin User</h1>
-
 			<form method="post" action="<?php echo BASE_URL . 'admin/users.php'; ?>" >
 
 				<!-- validation errors for the form -->
@@ -31,9 +31,9 @@
 				<input type="text" name="username" value="<?php echo $username; ?>" placeholder="Username">
 				<input type="email" name="email" value="<?php echo $email ?>" placeholder="Email">
 				<input type="password" name="password" placeholder="Password">
-				<input type="password" name="passwordConfirmation" placeholder="Password confirmation">
+				<input type="password" name="passwordConfirmation" placeholder="Password Confirmation">
 				<select name="role">
-					<option value="" selected disabled>Assign role</option>
+					<option value="" selected disabled>Assign Role</option>
 					<?php foreach ($roles as $key => $role): ?>
 						<option value="<?php echo $role; ?>"><?php echo $role; ?></option>
 					<?php endforeach ?>
@@ -52,15 +52,16 @@
 		<!-- Display records from DB-->
 		<div class="table-div">
 			<!-- Display notification message -->
-			<?php include(ROOT_PATH . '/admin/includes/messages.php') ?>
+			<?php include(ROOT_PATH . '/includes/messages.php') ?>
 
 			<?php if (empty($admins)): ?>
 				<h1>No admins in the database.</h1>
 			<?php else: ?>
 				<table class="table">
 					<thead>
-						<th>N</th>
-						<th>Admin</th>
+						<th></th>
+						<th>Name</th>
+						<th>Email</th>
 						<th>Role</th>
 						<th colspan="2">Action</th>
 					</thead>
@@ -69,7 +70,9 @@
 						<tr>
 							<td><?php echo $key + 1; ?></td>
 							<td>
-								<?php echo $admin['username']; ?>, &nbsp;
+								<?php echo $admin['username']; ?>
+							</td>
+							<td>
 								<?php echo $admin['email']; ?>	
 							</td>
 							<td><?php echo $admin['role']; ?></td>
@@ -91,6 +94,6 @@
 		</div>
 		<!-- // Display records from DB -->
 	</div>
+	</div>	
 </body>
 </html>
-
