@@ -40,6 +40,30 @@ $result = mysqli_query($conn, $query);
 			</div>
 			<!-- // full post div -->
 			
+
+			<!-- Then cmments below -->
+			<h2>Leave a comment:</h2>
+				<form action="insertcomment.php" method="post">
+				<textarea name="body" id="body" cols="30" rows="10"></textarea>
+				<input type="hidden" name="post_id" value="<?php echo $post['id']  ?>" />
+				<input type="submit" />
+				</form>
+			<h2>Comments</h2>
+				<?php
+				global $conn;
+				$query = "SELECT * FROM comments WHERE post_id = '$post[id]' ";
+				$result = mysqli_query($conn, $query);
+				while($row = mysqli_fetch_object($result))
+				{			
+				?>
+				<div class="comment">
+				By: <?php echo $row->user_id;?>
+				<p><?php echo $body; ?></p>
+				</div>
+				<?php
+				}
+				?>
+
 		</div>
 		
 		<!-- post sidebar -->

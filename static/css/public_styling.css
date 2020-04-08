@@ -10,7 +10,6 @@ body {
   padding-bottom: 1em;
   min-height: 100%;
   /* margin-bottom:; */
-  
 }
 /* HEADINGS DEFAULT */
 h1, h2, h3, h4, h5, h6 { color: #0e1111; font-family: 'Futura', sans-serif;}
@@ -40,6 +39,12 @@ form input {
 form input:focus {
 	outline: none;
 }
+/* tables */
+table { border-collapse: collapse; width: 70%; margin: 20px auto; }
+th, td { padding: 8px; text-align: center; border: 1px solid #ddd; }
+.my-profile-div a.fa { color: white; padding: 3px; }
+.my-profile-div .edit { background: #004220; padding: 5px 0px;}
+th { text-align: center;}
 /* BUTTON DEFAULT */
 .btn {
 	color: white;
@@ -426,6 +431,13 @@ form input:focus {
 	justify-content: center;
 	/* box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(0,0,0,.08); */
 }
+
+.container .content .my-profile-div{
+	/* width: 90%;  */
+	font-family: monospace;
+}
+
+
 /* * * * * * * * *
 * SINGLE PAGE 
 * * * * * * * * */

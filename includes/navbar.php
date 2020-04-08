@@ -4,15 +4,9 @@
 	</div>
 	<ul>
 	  <li><a class="active" href="index.php">Home</a></li>
-	  <li>
-		  <a href="music.php">Music</a>
-		  <!-- <ul class="dropdown">
-		  		<li><a href="#">new singles</a></li>
-                <li><a href="#">album reviews</a></li>
-		  </ul> -->
-	  </li>
-	  <li><a href="#films">Films</a></li>
-	  <li><a href="#myprofiles">My Profile</a></li>
+	  <li><a href="music.php">Music</a></li>
+	  <li><a href="films.php">Films</a></li>
+	  <li><a href="my_profile.php">My Profile</a></li>
 	</ul>
 </div>
 

@@ -8,7 +8,7 @@
 <?php $posts = getPublishedPosts(); ?>
 
 <?php require_once( ROOT_PATH . '/includes/head_section.php') ?>
-	<title>LifeBlog | Music </title>
+	<title>LifeBlog | Films </title>
 </head>
 <body>
 	<!-- container - wraps whole page -->
@@ -20,11 +20,11 @@
         <!-- Page content -->
 		<div class="content">
 			<hr>
-			<h2 class="content-title">Music Articles</h2>
+			<h2 class="content-title">Film Articles</h2>
             <hr>
             
             <?php global $conn;
-            $sql = "SELECT * FROM posts WHERE category = 'music' and published = 1 ";
+            $sql = "SELECT * FROM posts WHERE category = 'film' and published = 1 ";
             $result = mysqli_query($conn, $sql);
 	        $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);?>
 

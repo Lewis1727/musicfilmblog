@@ -1,4 +1,7 @@
 <?php 
+
+require_once("registration_login.php");
+
 /* * * * * * * * * * * * * * *
 * Returns all published posts
 * * * * * * * * * * * * * * */
@@ -94,5 +97,69 @@ function getAllTopics()
 }
 
 
+// User variables
+$user_id = 0;
+$username = "";
+$email = "";
+$password = "";
+$isEditingUser = false;
+$errors = [];
+
+
+
+// User actions
+if (isset($_GET['edit-user'])) {
+	$isEditingUser = true;
+	$admin_id = $_GET['edit-user'];
+	editUser($admin_id);
+}
+// if user clicks the update admin button
+if (isset($_POST['update_user'])) {
+	updateUser($_POST);
+}
+
+
+
+
+function editUser($user_id)
+{
+	global $conn, $username, $isEditingUser, $user_id, $email, $password;
+
+	$sql = "SELECT * FROM users WHERE id=$user_id LIMIT 1";
+	$result = mysqli_query($conn, $sql);
+	$user = mysqli_fetch_assoc($result);
+
+	// set form values ($username and $email) on the form to be updated
+	$username = $user['username'];
+	$email = $user['email'];
+	$password = $user['password'];
+}
+
+function updateUser($request_values){
+	global $conn, $errors, $username, $isEditingUser, $user_id, $email, $password;
+	// get id of the admin to be updated
+	$user_id = $request_values['user_id'];
+	// set edit state to false
+	$isEditingUser = false;
+
+
+	$username = esc($request_values['username']);
+	$email = esc($request_values['email']);
+	$password = esc($request_values['password']);
+	$passwordConfirmation = esc($request_values['passwordConfirmation']);
+
+	// register user if there are no errors in the form
+	if (count($errors) == 0) {
+		//encrypt the password (security purposes)
+		$password = md5($password);
+
+		$query = "UPDATE users SET username='$username', email='$email', password='$password' WHERE id=$user_id";
+		mysqli_query($conn, $query);
+
+		$_SESSION['message'] = "Your profile information updated successfully";
+		header('location: my_profile.php');
+		exit(0);
+	}
+}
 
 ?>
