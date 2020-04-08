@@ -6,6 +6,7 @@
 	<title>Admin | Manage Topics</title>
 </head>
 <body>
+<?php if ($_SESSION['user']['role'] == "Admin"): ?>
 	<div class="container">
 	<!-- admin navbar -->
 	<?php include(ROOT_PATH . '/admin/includes/navbar.php') ?>
@@ -24,7 +25,7 @@
 					<input type="hidden" name="topic_id" value="<?php echo $topic_id; ?>">
 				<?php endif ?>
 				<input type="text" name="topic_name" value="<?php echo $topic_name; ?>" placeholder="Topic">
-				<!-- <input type="text" name="topic_id" value="<?php echo $topic_id; ?>" placeholder="Topic ID"> -->
+				<input type="text" name="topic_id" value="<?php echo $topic_id; ?>" placeholder="Topic ID">
 				<!-- if editing topic, display the update button instead of create button -->
 				<?php if ($isEditingTopic === true): ?> 
 					<button type="submit" class="btn" name="update_topic">UPDATE</button>
@@ -54,14 +55,10 @@
 							<td><?php echo $key + 1; ?></td>
 							<td><?php echo $topic['name']; ?></td>
 							<td>
-								<a class="fa fa-pencil btn edit"
-									href="topics.php?edit-topic=<?php echo $topic['id'] ?>">
-								</a>
+								<a class="btn edit" href="topics.php?edit-topic=<?php echo $topic['id'] ?>"><i class="fa fa-edit"></i></a>
 							</td>
 							<td>
-								<a class="fa fa-trash btn delete"								
-									href="topics.php?delete-topic=<?php echo $topic['id'] ?>">
-								</a>
+								<a class="btn delete" href="topics.php?delete-topic=<?php echo $topic['id'] ?>"><i class="fa fa-trash"></i></a>
 							</td>
 						</tr>
 					<?php endforeach ?>
@@ -72,5 +69,10 @@
 		<!-- // Display records from DB -->
 	</div>
 	</div>
+	<?php else: ?>
+	
+	<h2 class="warning">YOU HAVE NO ROOTS TO ACCESS THIS PAGE </h2>
+
+	<?php endif ?>
 </body>
 </html>

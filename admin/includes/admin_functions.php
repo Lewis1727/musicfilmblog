@@ -11,6 +11,10 @@ $errors = [];
 $topic_id = 0;
 $isEditingTopic = false;
 $topic_name = "";
+// quote variable
+$quote_text = "";
+$quote_author = "";
+
 
 /* - - - - - - - - - - 
 -  Admin users actions
@@ -213,9 +217,13 @@ function createTopic($request_values){
 	$topic_name = esc($request_values['topic_name']);
 	// create slug: if topic is "Life Advice", return "life-advice" as slug
 	$topic_slug = makeSlug($topic_name);
+	$topic_id = esc($request_values['topic_id']);
 	// validate form
 	if (empty($topic_name)) { 
 		array_push($errors, "Topic name required"); 
+	}
+	if (empty($topic_id)) { 
+		array_push($errors, "Topic id required"); 
 	}
 	// Ensure that no topic is saved twice. 
 	$topic_check_query = "SELECT * FROM topics WHERE slug='$topic_slug' LIMIT 1";
@@ -225,8 +233,8 @@ function createTopic($request_values){
 	}
 	// register topic if there are no errors in the form
 	if (count($errors) == 0) {
-		$query = "INSERT INTO topics (name, slug) 
-				  VALUES( '$topic_name', '$topic_slug')";
+		$query = "INSERT INTO topics (id, name, slug) 
+				  VALUES('$topic_id', '$topic_name', '$topic_slug')";
 		mysqli_query($conn, $query);
 
 		$_SESSION['message'] = "Topic created successfully";
@@ -277,5 +285,6 @@ function deleteTopic($topic_id) {
 		exit(0);
 	}
 }
+
 
 ?>

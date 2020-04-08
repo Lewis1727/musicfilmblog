@@ -10,6 +10,13 @@
 <title> <?php echo $post['title'] ?> | LifeBlog</title>
 </head>
 <body>
+
+<?php 
+global $conn;
+$query = "UPDATE posts SET views = views + 1 WHERE id = '$post[id]'"; 
+$result = mysqli_query($conn, $query);
+?>
+
 <div class="container">
 	<!-- Navbar -->
 		<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
@@ -26,8 +33,8 @@
 				<h2 class="post-title"><?php echo $post['title']; ?></h2>
 				<img src="<?php echo BASE_URL . 'static/images/' . $post['image']; ?>" class="post_image" alt="">
 				<div class="post-body-div">
-					<?php echo file_get_contents (BASE_URL . 'includes/topics/' . $post['body']); ?>
-					<!-- <?php echo html_entity_decode($post['body']); ?> -->
+					<!-- <?php echo file_get_contents (BASE_URL . 'includes/topics/' . $post['body']); ?> -->
+					<?php echo html_entity_decode($post['body']); ?>
 				</div>
 			<?php endif ?>
 			</div>

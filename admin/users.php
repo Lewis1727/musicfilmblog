@@ -9,6 +9,7 @@
 	<title>Admin | Manage users</title>
 </head>
 <body>
+<?php if ($_SESSION['user']['role'] == "Admin"): ?>
 	<div class="container">
 	<!-- admin navbar -->
 	<?php include(ROOT_PATH . '/admin/includes/navbar.php') ?>
@@ -76,15 +77,11 @@
 								<?php echo $admin['email']; ?>	
 							</td>
 							<td><?php echo $admin['role']; ?></td>
-							<td>
-								<a class="fa fa-pencil btn edit"
-									href="users.php?edit-admin=<?php echo $admin['id'] ?>">
-								</a>
+							<td>							
+								<a class="btn edit" href="users.php?edit-admin=<?php echo $admin['id'] ?>"><i class="fa fa-edit"></i></a>							
 							</td>
 							<td>
-								<a class="fa fa-trash btn delete" 
-								    href="users.php?delete-admin=<?php echo $admin['id'] ?>">
-								</a>
+								<a class="btn delete" href="users.php?delete-admin=<?php echo $admin['id'] ?>"><i class="fa fa-trash"></i></a>
 							</td>
 						</tr>
 					<?php endforeach ?>
@@ -95,5 +92,11 @@
 		<!-- // Display records from DB -->
 	</div>
 	</div>	
+
+	<?php else: ?>
+	
+	<h2 class="warning">YOU HAVE NO ROOTS TO ACCESS THIS PAGE </h2>
+
+	<?php endif ?>
 </body>
 </html>

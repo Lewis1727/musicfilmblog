@@ -59,9 +59,10 @@ th { text-align: center;}
 .header .logo { width: 50%; float: left; }
 .header .logo h1 { color: white;font-family: monospace; font-size: 3em; letter-spacing: 5px; font-weight: 100; }
 .header .user-info { width: 15%; margin: auto; float: right; font-size: 2em; font-family: 'Futura',sans-serif; padding-top: initial ;}
+.header .user-info .span-info {font-family: monospace; font-weight: 600; font-size: 1em; }
 .header .logout-btn { 
 	font-size: 0.7em;
-	font-family: 'Futura',sans-serif;
+	font-family: monospace;
 	background: red;
 	color: white;
 	text-decoration: none; 
@@ -70,7 +71,7 @@ th { text-align: center;}
 	border: none;
 	letter-spacing: .1em;
 	padding: 5px 10px;
-	font-weight: 700;
+	font-weight: 600;
 	text-align: center;
 }
 .header .login-btn { 
@@ -168,10 +169,10 @@ th { text-align: center;}
 .table-div .message { width: 90%; margin-top: 20px; }
 .table-div table { width: 90%; font-family: monospace; }
 .table-div a.fa { color: white; padding: 3px; }
-.table-div .edit { background: #004220; }
-.table-div .delete { background: #F70E1A; }
-.table-div .publish { background: red; }
-.table-div .unpublish { background: green; }
+.table-div .edit { background: #004220; padding: 5px 0px;}
+.table-div .delete { background: #F70E1A; padding: 5px 0px;}
+.table-div .publish { background: red; padding: 5px 0px; }
+.table-div .unpublish { background: green; padding: 5px 0px; }
 /* * * * * * * * * *
 * VALIDATION ERRORS
 * * * * * * * * * */
@@ -187,3 +188,4 @@ th { text-align: center;}
 }
 .error {color: #a94442; background: #f2dede; border: 1px solid #a94442; margin-bottom: 20px; }
 .validation_errors p {text-align: left;margin-left: 10px;}
+.warning {font-size: 2em; font-family: monospace; font-weight: 700; text-align: center; color: #F70E1A;}

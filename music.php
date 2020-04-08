@@ -8,7 +8,7 @@
 <?php $posts = getPublishedPosts(); ?>
 
 <?php require_once( ROOT_PATH . '/includes/head_section.php') ?>
-	<title>LifeBlog | Home </title>
+	<title>LifeBlog | Music </title>
 </head>
 <body>
 	<!-- container - wraps whole page -->
@@ -17,21 +17,19 @@
 		<?php include( ROOT_PATH . '/includes/navbar.php') ?>
 		<!-- // navbar -->
 
-		<!-- banner -->
-		<?php include( ROOT_PATH . '/includes/banner.php') ?>
-		<!-- // banner -->
-
-		<!-- Page content -->
+        <!-- Page content -->
 		<div class="content">
 			<hr>
-			<h2 class="content-title">Recent Articles</h2>
-			<hr>
-			<?php array_multisort(array_column($posts, "created_at"), SORT_DESC, $posts); ?>
-			<?php foreach ($posts as $post)  : ?>
-			
+			<h2 class="content-title">Music Articles</h2>
+            <hr>
+            
+            <?php global $conn;
+            $sql = "SELECT * FROM posts WHERE category = 'music' ";
+            $result = mysqli_query($conn, $sql);?>
 
-			
-				
+            <?php array_multisort(array_column($posts, "created_at"), SORT_DESC, $posts); ?>
+            
+			<?php foreach ($posts as $post)  : ?>
 			<div class="post" style="margin-left: 0px;">
 				<div class="postimg"><img src="<?php echo BASE_URL . 'static/images/' . $post['image']; ?>" class="post_image" alt=""></div>
         		<!-- Added this if statement... -->

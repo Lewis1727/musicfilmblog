@@ -74,6 +74,7 @@ form input:focus {
     float: left;
 	font-family: monospace;
 	/* font-family: 'Noto Serif', serif; */
+	display: block;
 }
 .navbar ul li a {
 	font-size: 1.5em;
@@ -85,8 +86,34 @@ form input:focus {
 }
 .navbar ul li a:hover {
 	color:#DCDCDC;
-    background-color: #0e1111;
+	background-color: #0e1111;
+	/* transition-duration: 0.5s; */
+	
 }
+
+.navbar ul li ul{
+	background-color: #0e1111;
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	transition: all 0.5s ease;
+	margin-top: 1rem;
+	left: 0;
+	display: none;
+}
+
+.navbar ul li:hover > ul,
+.navbar ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  color: white;
+}
+
+.navbar ul li ul li {
+	clear: both;
+	width: 100%;
+  }
 
 /* LOGO */
 .navbar .logo_div {
@@ -102,6 +129,10 @@ form input:focus {
 	font-family: monospace;
 	/* font-family: 'Tangerine', cursive; */
 }
+
+
+
+
 
 /* FOOTER */
 /* .footer {
