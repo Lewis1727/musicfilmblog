@@ -37,7 +37,7 @@
 		<!-- // Middle form - to create and edit -->
 
 		<!-- Display records from DB-->
-		<div class="table-div">
+		<div class="table-div" style="width: 45%; margin-top: 10px;">
 			<!-- Display notification message -->
 			<?php include(ROOT_PATH . '/includes/messages.php') ?>
 			<?php if (empty($topics)): ?>

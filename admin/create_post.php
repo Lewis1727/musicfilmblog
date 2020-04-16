@@ -31,7 +31,7 @@
 				
 				
 				<?php if ($isEditingPost == true): ?>
-					<input type="text" name="title" value="<?php echo $featued_image; ?>" placeholder="Title">
+					<input type="file" name="featured_image" value="<?php echo $featured_image; ?>" placeholder="Image">
 				<?php else: ?>
 					<label style="float: left; margin: 5px auto 5px;">Featured image</label>				
 					<input type="file" name="featured_image">

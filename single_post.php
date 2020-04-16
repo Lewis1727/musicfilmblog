@@ -1,5 +1,6 @@
 <?php  include('config.php'); ?>
 <?php  include('includes/public_functions.php'); ?>
+
 <?php 
 	if (isset($_GET['post-slug'])) {
 		$post = getPost($_GET['post-slug']);
@@ -14,7 +15,7 @@
 <?php 
 global $conn;
 $query = "UPDATE posts SET views = views + 1 WHERE id = '$post[id]'"; 
-$result = mysqli_query($conn, $query);
+mysqli_query($conn, $query);
 ?>
 
 <div class="container">
@@ -36,36 +37,63 @@ $result = mysqli_query($conn, $query);
 					<!-- <?php echo file_get_contents (BASE_URL . 'includes/topics/' . $post['body']); ?> -->
 					<?php echo html_entity_decode($post['body']); ?>
 				</div>
-			<?php endif ?>
-			</div>
+			</div>	
 			<!-- // full post div -->
 			
 
-			<!-- Then cmments below -->
-			<h2>Leave a comment:</h2>
-				<form action="insertcomment.php" method="post">
-				<textarea name="body" id="body" cols="30" rows="10"></textarea>
-				<input type="hidden" name="post_id" value="<?php echo $post['id']  ?>" />
-				<input type="submit" />
-				</form>
-			<h2>Comments</h2>
-				<?php
-				global $conn;
-				$query = "SELECT * FROM comments WHERE post_id = '$post[id]' ";
-				$result = mysqli_query($conn, $query);
-				while($row = mysqli_fetch_object($result))
-				{			
-				?>
-				<div class="comment">
-				By: <?php echo $row->user_id;?>
-				<p><?php echo $body; ?></p>
-				</div>
-				<?php
-				}
-				?>
-
-		</div>
+			<!-- Then cоmments below -->
+				<?php if (isset($_SESSION['user']['username'])): ?>	
+					<div class="h2comment">
+					<hr>
+					<h2>Leave a comment</h2>
+					<hr>
+					</div>
+					<?php include(ROOT_PATH . '/includes/errors.php') ?>
+					<form enctype="multipart/form-data" action="single_post.php?post-slug=<?php echo $post['slug']; ?>" method="post">
+					<textarea name="comment_body" id="comment_body" cols="100" rows="10" placeholder="Add a comment..."></textarea>
+					<input type="hidden" name="comment_post_id" value="<?php echo $post['id']  ?>" />
+					<input type="hidden" name="comment_username" value="<?php echo $_SESSION['user']['username'] ?>" />
+					<input type="hidden" name="comment_user_id" value="<?php echo $_SESSION['user']['id'] ?>" />
+					<input type="hidden" name="comment_post_title" value="<?php echo $post['title'] ?>" />
+					<button class="commentbtn" name="create_comment"/>Post comment</button>
+					</form>
+				
+				<?php else: ?>
+					<a href="login.php" class="join-us">Sign in to write comments!</a>
+				<?php endif ?>
+					<div class="h2comment">	
+					<hr>
+					<h2>Comments</h2>
+					<hr>
+					</div>
+					
+					
+					<?php
+					global $conn;
+					$query = "SELECT * FROM comments WHERE post_id = '$post[id]' ";
+					$result = mysqli_query($conn, $query);
+					if ($result->num_rows>0){
+					while($row = mysqli_fetch_object($result)){		
+					?>
+					<div class="comment-body">
+					<div class="commentauthor">
+						<span>
+						<p><?php echo $row->username;?></p>
+						</span>
+					</div>
+					<div class="commentbody"><p><?php echo html_entity_decode ($row->body); ?></p></div>
+					<hr>
+					</div>
+					<?php } ?>
+					<?php }else{ ?>
+						<div class="nocomments">
+						<p>No comments for this post...</p>
+						</div>
+					<?php } ?>
 		
+					<?php endif ?>	
+		</div> 
+	
 		<!-- post sidebar -->
 		<div class="post-sidebar">
 			<div class="card">

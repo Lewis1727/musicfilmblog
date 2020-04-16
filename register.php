@@ -1,5 +1,6 @@
 <?php  include('config.php'); ?>
 <!-- Source code for handling registration and login -->
+<?php  include('includes/public_functions.php'); ?>
 <?php  include('includes/registration_login.php'); ?>
 
 <?php include('includes/head_section.php'); ?>
@@ -12,7 +13,7 @@
 		<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
 	<!-- // Navbar -->
 
-	<div style="width: 40%; margin: 20px auto;">
+	<div class="register">
 		<form method="post" action="register.php" >
 			<h2>Register on LifeBlog</h2>
 			<?php include(ROOT_PATH . '/includes/errors.php') ?>

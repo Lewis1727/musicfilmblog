@@ -22,6 +22,7 @@
 		<?php echo getTopicNameById($topic_id); ?>
 	</h2>
 	<hr>
+	<?php array_multisort(array_column($posts, "created_at"), SORT_DESC, $posts); ?>
 	<?php foreach ($posts as $post): ?>
 		<div class="post" style="margin-left: 0px;">
 			<div class="postimg"><img src="<?php echo BASE_URL . '/static/images/' . $post['image']; ?>" class="post_image" alt=""></div>

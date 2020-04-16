@@ -1,4 +1,5 @@
 <?php  include('config.php'); ?>
+<?php  include('includes/public_functions.php'); ?>
 <?php  include('includes/registration_login.php'); ?>
 <?php  include('includes/head_section.php'); ?>
 	<title>LifeBlog | Sign in </title>
@@ -9,7 +10,7 @@
 	<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
 	<!-- // Navbar -->
 
-	<div style="width: 40%; margin: 20px auto;">
+	<div class="login">
 		<form method="post" action="login.php" >
 			<h2>Login</h2>
 			<?php include(ROOT_PATH . '/includes/errors.php') ?>

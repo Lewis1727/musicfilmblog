@@ -14,6 +14,12 @@ $topic_name = "";
 // quote variable
 $quote_text = "";
 $quote_author = "";
+// comment variables
+$comment_post_id = 0;
+$comment_user_id = 0;
+$comment_username = '';
+$comment_body = '';
+$comment_post_title = '';
 
 
 /* - - - - - - - - - - 
@@ -286,5 +292,27 @@ function deleteTopic($topic_id) {
 	}
 }
 
-
+function getAllComments()
+{
+	global $conn;
+	$sql = "SELECT * FROM comments";
+	$result = mysqli_query($conn, $sql);
+	$comments = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	return $comments;
+}
+// if user clicks the Delete admin button
+if (isset($_GET['delete-comment'])) {
+	$comment_id = $_GET['delete-comment'];
+	deleteComment($comment_id);
+}
+// delete admin user 
+function deleteComment($comment_id) {
+	global $conn;
+	$sql = "DELETE FROM comments WHERE id=$comment_id";
+	if (mysqli_query($conn, $sql)) {
+		$_SESSION['message'] = "Comment successfully deleted";
+		header("location: comments.php");
+		exit(0);
+	}
+}
 ?>

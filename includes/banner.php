@@ -2,7 +2,7 @@
 	
 	<div class="bannerloggedin">
 		<div class="welcome_msg">
-			<h1>Quote of the Day</h1>
+			<h2>Quote of the Day</h2>
 			<p> 
 			    “He looked at her the way <br> 
 			    all women want to be looked at by a man.” <br> 
@@ -12,14 +12,14 @@
 		</div>
 
 		<div class="logged_in_info">
-		<h1 >Welcome, <?php echo $_SESSION['user']['username'] ?>!</h1>
+		<h2>Welcome, <?php echo $_SESSION['user']['username'] ?>!</h2>
 		<a href="logout.php" class="btnlogout">LOGOUT</a>
 		</div>
 	</div>
 <?php }else{ ?>
 	<div class="banner">
 		<div class="welcome_msg">
-			<h1>Quote of the Day</h1>
+			<h2>Quote of the Day</h2>
 			<p> 
 			    “He looked at her the way <br> 
 			    all women want to be looked at by a man.” <br> 

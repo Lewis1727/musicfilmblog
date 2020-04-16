@@ -22,32 +22,49 @@
 						<th>Name</th>
 						<th>Email</th>
                         <th>You loined us on</th>
-                        <th>Edit profile</th>
+                        <!-- <th>Edit profile</th> -->
 					</thead>
 					<tbody>					
 						<tr>							
 							<td><?php echo $_SESSION['user']['username']; ?></td>
 							<td><?php echo $_SESSION['user']['email']; ?></td>
                             <td><?php echo $_SESSION['user']['created_at']; ?></td>
-                            <td><a class="btn edit" href="edit_user.php?edit-user=<?php echo $_SESSION['user']['id'] ?>"><i class="fa fa-edit"></i></a></td>							
+                            <!-- <td><a class="btn edit" href="edit_user.php?edit-user=<?php echo $_SESSION['user']['id'] ?>"><i class="fa fa-edit"></i></a></td>							 -->
 						</tr>
 				
 					</tbody>
-        </table>  
-        </div>
+		</table>  
+		
+		<div class="myprofilecomments">
+		<h2 class="h2comment">Your comments:</h2> 
+		<?php
+					global $conn;
+					$query = "SELECT * FROM comments WHERE user_id = '{$_SESSION['user']['id']}' ";
+					$result = mysqli_query($conn, $query);
+					if ($result->num_rows>0){
+					while($row = mysqli_fetch_object($result)){		
+					?>
+					<div class="comment-body">
+					<div class="commentauthor">
+						<span>
+						<p><?php echo $row->post_title;?> </p>
+						</span>
+					</div>
+					<div class="commentbody">
+						<p><?php echo html_entity_decode ($row->body); ?></p></div>
+					<hr>
+					</div>
+					<?php } ?>
+					<?php }else{ ?>
+						<div class="nocomments">
+						<p>You haven't commented our posts...</p>
+						</div>
+					<?php } ?>
+		</div>		
+	</div>
         <?php else :?>
-        <div class="banner">
-		    <div class="welcome_msg">
-			<h1>Quote of the Day</h1>
-			<p> 
-			    “He looked at her the way <br> 
-			    all women want to be looked at by a man.” <br> 
-				<span>~ The Great Gatsby</span>
-			</p>
-			<a href="register.php" class="btn">Join us!</a>
-		</div>
-
-		<div class="login_div">
+        <div class="banner_phone">
+		<div class="login_div_phone">
 			<form action="<?php echo BASE_URL . 'index.php'; ?>" method="post" >
 				<h2>Login</h2>
 				    <div style="width: 60%; margin: 0px auto;">
@@ -60,7 +77,7 @@
 		</div>
 	</div>
         <?php endif?>
-		</div>
+	</div>
 	<!-- // Page content -->
 	<!-- footer -->
 	<?php include( ROOT_PATH . '/includes/footer.php') ?>

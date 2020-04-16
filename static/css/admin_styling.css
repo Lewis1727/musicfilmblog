@@ -23,7 +23,7 @@ form button { float: right; margin-left: 24%; }
 form input:focus { outline: none; }
 label {	margin-top: 20px; float: left; }
 /* tables */
-table { border-collapse: collapse; width: 70%; margin: 20px auto; }
+table { border-collapse: collapse; width: 70%; margin: 20px auto; border-color: black; }
 th, td { padding: 8px; text-align: left; border: 1px solid #ddd; }
 th { text-align: center;}
 /* buttons */
@@ -173,6 +173,7 @@ th { text-align: center;}
 .table-div .delete { background: #F70E1A; padding: 5px 0px;}
 .table-div .publish { background: red; padding: 5px 0px; }
 .table-div .unpublish { background: green; padding: 5px 0px; }
+
 /* * * * * * * * * *
 * VALIDATION ERRORS
 * * * * * * * * * */
@@ -189,3 +190,151 @@ th { text-align: center;}
 .error {color: #a94442; background: #f2dede; border: 1px solid #a94442; margin-bottom: 20px; }
 .validation_errors p {text-align: left;margin-left: 10px;}
 .warning {font-size: 2em; font-family: monospace; font-weight: 700; text-align: center; color: #F70E1A;}
+
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 812px) {
+
+.container {
+	width: 100%;
+	margin: 0px auto;
+	margin-bottom: 70px;	
+	overflow: hidden;
+}
+
+.header {
+	padding: 15px 15px;
+	font-family: 'Noto Serif', serif;
+	color: white;
+	background: black;
+	border-radius: 0px 0px 6px 6px;
+}
+.header .logo { width: 100%; float: left; text-align: center; }
+.header .logo h1 { color: white;font-family: monospace; font-size: 5em; letter-spacing: 2px; font-weight: 100; }
+.header .user-info { width: 100%; margin: auto; float: left; font-size: 1.8em; font-family: 'Futura',sans-serif; padding-top: initial ; text-align: center;}
+.header .user-info .span-info {font-family: monospace; font-weight: 500; font-size: 2em; }
+.header .logout-btn { 
+	font-size: 1em;
+	font-family: monospace;
+	background: red;
+	color: white;
+	text-decoration: none; 
+	text-align: center;
+	border-radius: 5px;
+	border: none;
+	letter-spacing: .1em;
+	padding: 5px 10px;
+	font-weight: 600;
+	text-align: center;
+}
+.header .login-btn { 
+	font-size: 1em;
+	font-family: 'Futura',sans-serif;
+	background: green;
+	color: white;
+	text-decoration: none; 
+	text-align: center;
+	border-radius: 5px;
+	border: none;
+	letter-spacing: .1em;
+	padding: 5px 10px;
+	font-weight: 600;
+	text-align: center;
+}
+.header:after{ content: ""; display: block; clear: both; }
+
+.container.dashboard{
+	width: 100%;
+	margin: 5px auto 50px;
+	border: 0px solid #BFBCB3;
+	padding: 10px 0px 50px;
+	border-radius: 5px;
+}
+.container:after { content: ""; display: block; clear: both; }
+.container.dashboard h1 { text-align: center; margin: 25px; font-size: 3em;}
+.container.dashboard .stats a {
+	display: inline-block;
+	padding: 30px;
+	margin: 5px;
+	width: 70%;
+	text-align: center;
+	border-radius: 3px;
+	border: 1px solid #BFBCB3;
+	border-radius: 5px;
+	font-size: 2em;
+	text-decoration: none;
+	color: black;
+	margin-left: 110px;
+}
+.container.dashboard .stats a.first { margin-left: 110px; }
+.container.dashboard .stats a:hover { cursor: pointer; background-color: #E1E1E1; }
+.container.dashboard .buttons { margin-left: 15px; }
+.container.dashboard .buttons a {
+	display: inline-block;
+	margin: 10px;
+	text-decoration: none;
+	color: #444;
+	padding: 10px 25px;
+	border: none;
+	background-color: gray;
+	color: white;
+	border-radius: 5px;
+	font-size: 1em;
+	font-family: 'Futura',sans-serif;
+	font-weight: 700;
+}
+/* * * * * * * * * *
+* PAGE CONTENT
+* * * * * * * * * */
+.container.content {
+	width: 100%;
+    border-radius: 5px;
+    border: 0px solid #BFBCB3;
+    margin-top: 0px;
+}
+.container.content .menu {     
+	width: 90%;
+    float: left;
+    padding: 40px 35px; }
+/* Menu card */
+.container.content .menu .card .card-header {
+	padding: 10px;
+	text-align: center;
+	border-radius: 3px 3px 0px 0px;
+	background: black;
+}
+.container.content .menu .card .card-header h2 {font-size: 3em; color: white; font-family: monospace;}
+.container.content .menu .card .card-content a {
+	display: block;
+	box-sizing: border-box;
+	padding: 8px 10px;
+	border-bottom: 1px solid #e4e1e1;
+	color: #444;
+	font-family: monospace;
+	font-size: 2em;
+}
+.container.content .menu .card .card-content a:hover {
+	padding-left: 20px; background: #F9F9F9; transition: 0.1s;
+}
+/* Actions div (at the middle) */
+.container.content .action { width: 100%; float: left; text-align: center; }
+.container.content .action form { width: 90%; }
+.container.content .action .page-title { margin: 25px; font-family: monospace; font-size: 2.5em;}
+.container.content .action.create-post-div { width: 100%; }
+/* Table div (Displaying records from DB) */
+.table-div { float: left; width: 47%; }
+.table-div .message { width: 90%; margin-top: 20px; }
+.table-div table { 
+	width: 125%;
+    font-family: monospace;
+	font-size: 2em;
+	margin-left: 10px;}
+.table-div a.fa { color: white; padding: 3px; }
+.table-div .edit { background: #004220; padding: 5px 0px;}
+.table-div .delete { background: #F70E1A; padding: 5px 0px;}
+.table-div .publish { background: red; padding: 5px 0px; }
+.table-div .unpublish { background: green; padding: 5px 0px; }
+th, td { padding: 3px; text-align: left; border: 1px solid #ddd; }
+th { padding: 46px; text-align: center;}
+}

@@ -99,16 +99,16 @@
 		}
 	}
 	// escape value from form
-	function esc(String $value)
-	{	
-		// bring the global db connect object into function
-		global $conn;
+	// function esc(String $value)
+	// {	
+	// 	// bring the global db connect object into function
+	// 	global $conn;
 
-		$val = trim($value); // remove empty space sorrounding string
-		$val = mysqli_real_escape_string($conn, $value);
+	// 	$val = trim($value); // remove empty space sorrounding string
+	// 	$val = mysqli_real_escape_string($conn, $value);
 
-		return $val;
-	}
+	// 	return $val;
+	// }
 	// Get user info from user id
 	function getUserById($id)
 	{
