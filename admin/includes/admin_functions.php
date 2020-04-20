@@ -20,7 +20,11 @@ $comment_user_id = 0;
 $comment_username = '';
 $comment_body = '';
 $comment_post_title = '';
-
+//quotes variables
+$quote_author = '';
+$quote_text = '';
+$quote_id = 0;
+$isEditingQuote = false;
 
 /* - - - - - - - - - - 
 -  Admin users actions
@@ -312,6 +316,107 @@ function deleteComment($comment_id) {
 	if (mysqli_query($conn, $sql)) {
 		$_SESSION['message'] = "Comment successfully deleted";
 		header("location: comments.php");
+		exit(0);
+	}
+}
+
+// if user clicks the create quote button
+if (isset($_POST['create_quote'])) {
+	createQuote($_POST);
+}
+// if user clicks the Edit quote button
+if (isset($_GET['edit-quote'])) {
+	$isEditingQuote = true;
+	$quote_id = $_GET['edit-quote'];
+	editQuote($quote_id);
+}
+// if user clicks the update quote button
+if (isset($_POST['update_quote'])) {
+	updateQuote($_POST);
+}
+// if user clicks the Delete quote button
+if (isset($_GET['delete-quote'])) {
+	$quote_id = $_GET['delete-quote'];
+	deleteQuote($quote_id);
+}
+
+function getAllQuotes(){
+	global $conn;
+	$sql = "SELECT * FROM quote_of_the_day";
+	$result = mysqli_query($conn, $sql);
+	$quotes = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	return $quotes;
+}
+function createQuote($request_values){
+	global $conn, $errors, $quote_text, $quote_author, $quote_id;
+	$quote_text= esc($request_values['quote_text']);
+	$quote_author= esc($request_values['quote_author']);
+	// validate form
+	if (empty($quote_text)) { 
+		array_push($errors, "Quote text required"); 
+	}
+	if (empty($quote_author)) { 
+		array_push($errors, "Quote author required"); 
+	}
+	// Ensure that no topic is saved twice. 
+	$quote_check_query = "SELECT * FROM quote_of_the_day WHERE quote_text ='$quote_text' LIMIT 1";
+	$result = mysqli_query($conn, $quote_check_query);
+	if (mysqli_num_rows($result) > 0) { // if topic exists
+		array_push($errors, "Quote already exists");
+	}
+	// register topic if there are no errors in the form
+	if (count($errors) == 0) {
+		$query = "INSERT INTO quote_of_the_day (quote_text, quote_author) 
+				  VALUES('$quote_text', '$quote_author')";
+		mysqli_query($conn, $query);
+
+		$_SESSION['message'] = "Quote created successfully";
+		header('location: quotes.php');
+		exit(0);
+	}
+}
+function editQuote($quote_id) {
+	global $conn, $isEditingQuote, $quote_id, $quote_text, $quote_author;
+	$sql = "SELECT * FROM quote_of_the_day WHERE id=$quote_id LIMIT 1";
+	$result = mysqli_query($conn, $sql);
+	$quote = mysqli_fetch_assoc($result);
+	// set form values ($quote_text) on the form to be updated
+	$quote_text= $quote['quote_text'];
+	$quote_author= $quote['quote_author'];
+	$quote_id= $quote['id'];
+}
+function updateQuote($request_values) {
+	global $conn, $errors, $quote_author, $quote_text,  $quote_id;
+	$quote_text= esc($request_values['quote_text']);
+	$quote_author= esc($request_values['quote_author']);
+	$quote_id= esc($request_values['id']);
+	// validate form
+	if (empty($quote_text)) { 
+		array_push($errors, "Quote text required"); 
+	}
+	if (empty($quote_author)) { 
+		array_push($errors, "Quote author required"); 
+	}
+	if (empty($quote_id)) { 
+		array_push($errors, "Quote id required"); 
+	}
+	// register quote if there are no errors in the form
+	if (count($errors) == 0) {
+		$query = "UPDATE quote_of_the_day SET quote_text = '$quote_text', quote_author = '$quote_author' WHERE id=$quote_id";
+		mysqli_query($conn, $query);
+
+		$_SESSION['message'] = "Quote updated successfully";
+		header('location: quotes.php');
+		exit(0);
+	}
+}
+// delete topic 
+function deleteQuote($quote_id) {
+	global $conn;
+	$sql = "DELETE FROM quote_of_the_day WHERE id=$quote_id";
+	if (mysqli_query($conn, $sql)) {
+		$_SESSION['message'] = "Quote successfully deleted";
+		header("location: quotes.php");
 		exit(0);
 	}
 }

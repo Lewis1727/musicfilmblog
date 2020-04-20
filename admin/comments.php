@@ -7,6 +7,8 @@
 	<title>Admin | Manage Comments</title>
 </head>
 
+<?php if (isset($_SESSION['user']['username'])): ?>  
+<?php if ($_SESSION['user']['role'] == "Admin"): ?>
 <div class="container">
 	<!-- admin navbar -->
 	<?php include(ROOT_PATH . '/admin/includes/navbar.php') ?>
@@ -49,3 +51,15 @@
 				</table>
 			<?php endif ?>
 		</div>
+	
+	<?php elseif  ($_SESSION['user']['role'] == "Author"): ?>
+	<h2 class="warning">YOU HAVE NO ROOTS TO ACCESS THIS PAGE </h2>
+
+	<?php endif ?>
+	
+	<?php else: ?>
+	<h2 class="warning">YOU HAVE NO ROOTS TO ACCESS THIS PAGE </h2>
+	<?php endif ?>
+
+</body>
+</html>

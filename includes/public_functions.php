@@ -223,5 +223,12 @@ die("Fill out everything please.");
 }
 }
 
+function getAllQuotes(){
+	global $conn;
+	$sql = "SELECT * FROM quote_of_the_day";
+	$result = mysqli_query($conn, $sql);
+	$quotes = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	return $quotes;
+}
 
 ?>

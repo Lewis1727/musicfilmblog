@@ -9,6 +9,7 @@
 	<title>Admin | Manage users</title>
 </head>
 <body>
+<?php if (isset($_SESSION['user']['username'])): ?>  
 <?php if ($_SESSION['user']['role'] == "Admin"): ?>
 	<div class="container">
 	<!-- admin navbar -->
@@ -97,6 +98,10 @@
 	
 	<h2 class="warning">YOU HAVE NO ROOTS TO ACCESS THIS PAGE </h2>
 
+	<?php endif ?>
+	<?php else: ?>
+	
+	<h2 class="warning">YOU HAVE NO ROOTS TO ACCESS THIS PAGE </h2>
 	<?php endif ?>
 </body>
 </html>
