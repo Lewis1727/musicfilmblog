@@ -72,7 +72,7 @@
 				    </div>
 				<input type="text" name="username" value="<?php echo $username; ?>" placeholder="Username">
 				<input type="password" name="password"  placeholder="Password"> 
-				<button class="btn" type="submit" name="login_btn">Sign in</button>
+				<button class="btn fv" type="submit" name="login_btn">Sign in</button>
 			</form>
 		</div>
 	</div>

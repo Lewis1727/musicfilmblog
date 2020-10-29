@@ -34,7 +34,6 @@ mysqli_query($conn, $query);
 				<h2 class="post-title"><?php echo $post['title']; ?></h2>
 				<img src="<?php echo BASE_URL . 'static/images/' . $post['image']; ?>" class="post_image" alt="">
 				<div class="post-body-div">
-					<!-- <?php echo file_get_contents (BASE_URL . 'includes/topics/' . $post['body']); ?> -->
 					<?php echo html_entity_decode($post['body']); ?>
 				</div>
 			</div>	

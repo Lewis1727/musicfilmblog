@@ -8,8 +8,9 @@
 <?php $posts = getPublishedPosts(); ?>
 
 <?php require_once( ROOT_PATH . '/includes/head_section.php') ?>
-	<title>LifeBlog | Home </title>
+	<title>MusicBlog | Home </title>
 </head>
+<link rel="icon" type="image/png" href="/favicon.png"/>
 <body>
 	<!-- container - wraps whole page -->
 	<div class="container">
@@ -23,6 +24,7 @@
 
 		<!-- Page content -->
 		<div class="content">
+			
 			<hr>
 			<h2 class="content-title">Recent Articles</h2>
 			<hr>

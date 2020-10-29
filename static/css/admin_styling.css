@@ -328,7 +328,7 @@ th { text-align: center;}
 .table-div table { 
 	width: 125%;
     font-family: monospace;
-	font-size: 2em;
+	
 	margin-left: 10px;}
 .table-div a.fa { color: white; padding: 3px; }
 .table-div .edit { background: #004220; padding: 5px 0px;}
