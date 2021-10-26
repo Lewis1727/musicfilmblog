@@ -51,7 +51,7 @@ function getPostTopic($post_id){
 function getPublishedPostsByTopic($topic_id) {
 	global $conn;
 	$sql = "SELECT * FROM posts ps 
-			WHERE ps.id IN 
+			WHERE published = 1 AND  ps.id IN 
 			(SELECT pt.post_id FROM post_topic pt 
 				WHERE pt.topic_id=$topic_id GROUP BY pt.post_id 
 				HAVING COUNT(1) = 1)";
